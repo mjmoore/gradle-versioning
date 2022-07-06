@@ -56,4 +56,21 @@ class VersionTest {
 
         assertThat(version.toString()).isEqualTo("0.0.0")
     }
+
+    @Test
+    fun `Bumping version resets to zero for less significant version parts`() {
+        val initial = Version(0, 0, 0)
+
+        val patchRelease = initial.bumpPatch()
+        assertThat(patchRelease).isEqualTo(Version(0, 0, 1))
+
+        val minorRelease = patchRelease.bumpMinor()
+        assertThat(minorRelease).isEqualTo(Version(0, 1, 0))
+
+        val majorRelease = minorRelease.bumpMajor()
+        assertThat(majorRelease).isEqualTo(Version(1, 0, 0))
+
+        val otherMajorRelease = patchRelease.bumpMajor()
+        assertThat(otherMajorRelease).isEqualTo(Version(1, 0, 0))
+    }
 }

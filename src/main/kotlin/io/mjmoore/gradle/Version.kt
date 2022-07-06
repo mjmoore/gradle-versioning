@@ -22,7 +22,7 @@ data class Version(
 
     override fun toString(): String = "$major.$minor.$patch"
 
-    fun bumpMajor(): Version = copy(major = major + 1)
-    fun bumpMinor(): Version = copy(minor = minor + 1)
+    fun bumpMajor(): Version = copy(major = major + 1, minor = 0, patch = 0)
+    fun bumpMinor(): Version = copy(minor = minor + 1, patch = 0)
     fun bumpPatch(): Version = copy(patch = patch + 1)
 }
