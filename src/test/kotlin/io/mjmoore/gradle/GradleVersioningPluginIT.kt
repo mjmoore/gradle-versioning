@@ -50,7 +50,7 @@ class GradleVersioningPluginIT {
             writer.write(
                 """
                     plugins {
-                      id("io.mjmoore.gradle")
+                      id("io.mjmoore.gradle.gradle-versioning")
                     }
                 """.trimIndent()
             )
@@ -72,7 +72,7 @@ class GradleVersioningPluginIT {
             writer.write(
                 """
                     plugins {
-                      id("io.mjmoore.gradle")
+                      id("io.mjmoore.gradle.gradle-versioning")
                     }
                     
                     version = "1.0.0"

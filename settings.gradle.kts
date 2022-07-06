@@ -1,5 +1,8 @@
 rootProject.name = "gradle-versioning"
 
 pluginManagement {
-    includeBuild("plugin")
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+    }
 }

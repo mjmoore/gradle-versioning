@@ -1,7 +1,8 @@
 plugins {
+    id("maven-publish")
     id("java-gradle-plugin")
     id("org.jetbrains.kotlin.jvm") version "1.5.31"
-    id("maven-publish")
+    id("com.gradle.plugin-publish") version "0.18.0"
 }
 
 group = "io.mjmoore.gradle"
@@ -28,9 +29,18 @@ tasks.test {
     useJUnitPlatform()
 }
 
+pluginBundle {
+    website = "https://github.com/mjmoore/gradle-versioning"
+    vcsUrl = "https://github.com/mjmoore/gradle-versioning.git"
+    tags = listOf("versioning")
+}
+
 gradlePlugin {
-    plugins.create("versioning") {
-        id = "io.mjmoore.gradle"
+    val pluginName = "gradle-versioning"
+    plugins.create(pluginName) {
+        id = "${project.group}.$pluginName"
+        displayName = "Gradle Versioning"
+        description = project.description
         implementationClass = "io.mjmoore.gradle.GradleVersioningPlugin"
     }
 }
